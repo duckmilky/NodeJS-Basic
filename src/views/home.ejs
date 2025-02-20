@@ -26,7 +26,7 @@
         <div class="wp-content">
             <h1>List User</h1>
 
-            <form class="frm_action" action="/create-user">
+            <form class="frm_action" action="/create-user" method="get">
                 <button class="btn_addUser" type="submit">Add new User</button>
             </form>
             
@@ -43,9 +43,16 @@
                 <% data.forEach((user) => { %>
                     <tr>
                         <td><%= user.id %></td>
-                        <td><%= user.fullName %></td>
-                        <td><%= user.dateOfBirth %></td>
-                        <td><%= user.sex %></td>
+                        <td><%= user.fullName %></td>                              
+                        <% var m = new Date(user.dateOfBirth); var dateString = m.getUTCDate() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCFullYear() %>
+                        <td><%= dateString %></td>
+                        <td><%=  %>
+                            <% if(user.sex=='1') { %>
+                                Nam
+                            <% } else { %>
+                                Nữ 
+                            <% } %>
+                        </td>
                         <td><%= user.address %></td>
                         <td><a href="">Sửa</a> | <a href="">Xóa</a></td>
                     </tr>

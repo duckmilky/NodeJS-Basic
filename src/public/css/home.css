@@ -39,6 +39,10 @@ html{
     background-color: antiquewhite;
 }
 
+h1{
+    text-align: center;
+}
+
 .frm_action{
     display: flex;
     width: 100%;
