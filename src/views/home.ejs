@@ -9,22 +9,48 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- sidebar -->
-        <ul class="sidebar nav-list">
-            <a href="/">Admin</a>
-            <li class="nav-item"><a class="nav-link" href="/"><span>Trang chủ</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="/usermanager"><span>Quản lý người dùng</span></a></li>
-             
-        </ul>    
-        <!-- sidebar -->
+        <!-- navbar -->
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="/"><span>Home</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/usermanager"><span>UserManager</span></a></li>  
+                <li class="nav-item"><a class="nav-link" href="/login"><span>Login</span></a></li>  
+                <li class="nav-item"><a class="nav-link" href="/logout"><span>Logout</span></a></li>
+            </ul>    
+        <!-- navbar -->
+        </nav>
+
+        <!-- <%= JSON.stringify(data) %> -->
 
         <!-- content -->
         <div class="wp-content">
-            <div class="top-nav">
-                <div class="user">
+            <h1>List User</h1>
 
-                </div>
-            </div>
+            <form class="frm_action" action="/create-user">
+                <button class="btn_addUser" type="submit">Add new User</button>
+            </form>
+            
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>DATE</th>
+                    <th>SEX</th>
+                    <th>ADDRESS</th>
+                    <th>ACTION</th>
+                </tr>
+
+                <% data.forEach((user) => { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.fullName %></td>
+                        <td><%= user.dateOfBirth %></td>
+                        <td><%= user.sex %></td>
+                        <td><%= user.address %></td>
+                        <td><a href="">Sửa</a> | <a href="">Xóa</a></td>
+                    </tr>
+                <% }) %>
+            </table>
         </div>
         <!-- content -->
 

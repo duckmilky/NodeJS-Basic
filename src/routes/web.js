@@ -1,9 +1,15 @@
 import express from 'express'
-const router = express.Router()
 import {getHomePage,getUserManagerPage} from '../controllers/homeController'
+const router = express.Router()
 
-router.get('/', getHomePage)
+const initWebRout = (app) => {
+    router.get('/', getHomePage)
+    router.get('/usermanager', getUserManagerPage)
 
-router.get('/usermanager', getUserManagerPage)
+    return app.use('/', router)
+}
 
-export default router
+
+module.exports = {
+    initWebRout
+}   
