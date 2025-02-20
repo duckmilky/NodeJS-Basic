@@ -1,10 +1,15 @@
-import pool from "../config/database";
+import connection from "../config/database";
 
 const getAllUser = async (req, res) => {
-    const [results, fields] = await pool.execute('select * from Users')
+    let [results, fields] = await connection.query('select * from Users')
+    return results
+}
+
+const createUser = async (name, date, sex, address) => {
+    let [results, fields] = await connection.query(`insert into Users (fullName, dateOfBirth, sex, address) values (?,?,?,?)`, [name, date, sex, address])
     return results
 }
 
 module.exports = {
-    getAllUser
+    getAllUser,createUser
 }

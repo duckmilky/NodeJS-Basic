@@ -6,6 +6,10 @@ import {initWebRout} from './routes/web'
 const app = express()
 const port = process.env.PORT
 
+//Config req.body
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 //config view engine
 configViewEngine(app)
 

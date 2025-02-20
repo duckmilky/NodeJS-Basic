@@ -1,4 +1,4 @@
-import {getAllUser} from '../modals/CRUD_User'
+import {getAllUser,createUser} from '../modals/CRUD_User'
 
 const getHomePage = async (req, res) => {
     let listUsers = await getAllUser()
@@ -9,6 +9,20 @@ const getUserManagerPage = (req, res) => {
     return res.render('user.ejs')
 }
 
+const getAddUserPage = (req, res) => {
+    res.render('add-user.ejs')
+}
+
+const postCreateUser = (req, res) => {
+    let name= req.body.name
+    let date = req.body.date
+    let sex = req.body.sex
+    let address = req.body.address
+    createUser(name, date, sex, address)
+    res.redirect('/')
+}
+
 module.exports = {
-    getHomePage,getUserManagerPage
+    getHomePage,getUserManagerPage,
+    getAddUserPage,postCreateUser
 }
