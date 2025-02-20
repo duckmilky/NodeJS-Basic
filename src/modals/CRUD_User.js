@@ -10,6 +10,11 @@ const createUser = async (name, date, sex, address) => {
     return results
 }
 
+const deleteUser = async (id) => {
+    let [results, fields] = await connection.query('delete from Users where id=?', [id])
+    return results
+}
+
 module.exports = {
-    getAllUser,createUser
+    getAllUser,createUser,deleteUser
 }

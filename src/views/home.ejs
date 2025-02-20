@@ -54,7 +54,7 @@
                             <% } %>
                         </td>
                         <td><%= user.address %></td>
-                        <td><a href="">Sửa</a> | <a href="">Xóa</a></td>
+                        <td><a href="">Sửa</a> | <a class="delete" href="/delete-user/<%= user.id %>">Xóa</a></td>
                     </tr>
                 <% }) %>
             </table>
@@ -67,5 +67,18 @@
         </footer>
         <!-- footer -->
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let lists = document.querySelectorAll(".delete");
+            lists.forEach(function (item) {
+                item.addEventListener("click", function (event) {
+                    let userConfirm = confirm("Bạn có chắc chắn muốn xóa?");
+                    if (!userConfirm) {
+                        event.preventDefault(); // Ngăn chặn chuyển trang
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

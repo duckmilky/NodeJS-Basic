@@ -1,4 +1,4 @@
-import {getAllUser,createUser} from '../modals/CRUD_User'
+import {getAllUser,createUser,deleteUser} from '../modals/CRUD_User'
 
 const getHomePage = async (req, res) => {
     let listUsers = await getAllUser()
@@ -22,7 +22,14 @@ const postCreateUser = (req, res) => {
     res.redirect('/')
 }
 
+const getDeleteUser = (req, res) => {
+    let idUser = req.params.id
+    deleteUser(idUser)
+    res.redirect('/')
+}
+
 module.exports = {
     getHomePage,getUserManagerPage,
-    getAddUserPage,postCreateUser
+    getAddUserPage,postCreateUser,
+    getDeleteUser
 }
