@@ -44,7 +44,7 @@
                     <tr>
                         <td><%= user.id %></td>
                         <td><%= user.fullName %></td>                              
-                        <% var m = new Date(user.dateOfBirth); var dateString = m.getUTCDate() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCFullYear() %>
+                        <% var m = new Date(user.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = m.getUTCDate().toString().padStart(2, 0); var dateString = day +"-"+ month +"-"+  m.getUTCFullYear()%>
                         <td><%= dateString %></td>
                         <td><%=  %>
                             <% if(user.sex=='1') { %>
@@ -54,7 +54,7 @@
                             <% } %>
                         </td>
                         <td><%= user.address %></td>
-                        <td><a href="">Sửa</a> | <a class="delete" href="/delete-user/<%= user.id %>">Xóa</a></td>
+                        <td><a href="/edit-user/<%= user.id %>">Sửa</a> | <a class="delete" href="/delete-user/<%= user.id %>">Xóa</a></td>
                     </tr>
                 <% }) %>
             </table>

@@ -1,4 +1,4 @@
-import {getAllUser,createUser,deleteUser} from '../modals/CRUD_User'
+import {getAllUser,createUser,deleteUser,getUserById,updateUser} from '../modals/CRUD_User'
 
 const getHomePage = async (req, res) => {
     let listUsers = await getAllUser()
@@ -28,8 +28,14 @@ const getDeleteUser = (req, res) => {
     res.redirect('/')
 }
 
+const getEditUserPage = async (req, res) => {
+    let idUser = req.params.id
+    let userById = await getUserById(idUser)
+    res.render('edit-user.ejs', {data: userById[0]})
+}
+
 module.exports = {
     getHomePage,getUserManagerPage,
     getAddUserPage,postCreateUser,
-    getDeleteUser
+    getDeleteUser,getEditUserPage
 }

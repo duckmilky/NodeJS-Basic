@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/frmAddUser.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- navbar -->
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="/"><span>Home</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/usermanager"><span>UserManager</span></a></li>  
+                <li class="nav-item"><a class="nav-link" href="/login"><span>Login</span></a></li>  
+                <li class="nav-item"><a class="nav-link" href="/logout"><span>Logout</span></a></li>
+            </ul>    
+        <!-- navbar -->
+        </nav>
+        <%= JSON.stringify(data) %>
+        <!-- content -->
+        <div class="wp-content">
+            <h1>Update a User</h1>
+            <form class="form-add" action="/update-user" method="post">
+                <div class="input-group">
+                    <label for="">Id:</label>
+                    <input type="text" name="id" value="<%= data.id %>" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="">Name:</label>
+                    <input type="text" name="name" value="<%= data.fullName %>">
+                </div>
+                <div class="input-group">
+                    <label for="">Date of birth:</label>
+                    <% var m = new Date(data.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = m.getUTCDate().toString().padStart(2, 0); var dateString = m.getUTCFullYear() +"-"+ month +"-"+ day %>
+                    <input type="date" name="date" value="<%= dateString %>">
+                </div>
+                <div class="input-group">
+                    <label for="">Sex:</label>
+                    <select name="sex" id="">
+                        <option value="1" selected>Nam</option>
+                        <option value="0" >Nữ</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="">Address:</label>
+                    <input type="text" name="address" value="<%= data.address %>">
+                </div>
+                <div class="input-group">
+                    <button type="submit">Save</button>
+                </div>        
+            </form>       
+        </div>
+        <!-- content -->
+
+        <!-- footer -->
+        <footer class="footer">
+
+        </footer>
+        <!-- footer -->
+    </div>
+</body>
+</html>
