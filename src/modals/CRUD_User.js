@@ -1,4 +1,5 @@
-import connection from "../config/database";
+import {connection} from "../config/database";
+
 
 const getAllUser = async (req, res) => {
     let [results, fields] = await connection.query('select * from Users')
@@ -15,8 +16,9 @@ const getUserById = async (id) => {
     return results
 }
 
-const updateUser = () => {
-    
+const updateUser = async (id, name, date, sex, address) => {
+    let [results, fields] = await connection.query('update Users set fullName = ?, dateOfBirth = ?, sex = ?, address = ? where id = ?', [name, date, sex, address, id])
+    return results
 }
 
 const deleteUser = async (id) => {

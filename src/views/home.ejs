@@ -44,7 +44,7 @@
                     <tr>
                         <td><%= user.id %></td>
                         <td><%= user.fullName %></td>                              
-                        <% var m = new Date(user.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = m.getUTCDate().toString().padStart(2, 0); var dateString = day +"-"+ month +"-"+  m.getUTCFullYear()%>
+                        <% var m = new Date(user.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = (m.getUTCDate() + 1).toString().padStart(2, 0); var dateString = day +"-"+ month +"-"+  m.getUTCFullYear()%>
                         <td><%= dateString %></td>
                         <td><%=  %>
                             <% if(user.sex=='1') { %>
@@ -72,7 +72,7 @@
             let lists = document.querySelectorAll(".delete");
             lists.forEach(function (item) {
                 item.addEventListener("click", function (event) {
-                    let userConfirm = confirm("Bạn có chắc chắn muốn xóa?");
+                    let userConfirm = confirm("Bạn có chắc chắn muốn xóa User này không ?");
                     if (!userConfirm) {
                         event.preventDefault(); // Ngăn chặn chuyển trang
                     }

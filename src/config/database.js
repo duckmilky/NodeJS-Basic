@@ -10,4 +10,19 @@ const connection = mysql.createPool({
     queueLimit: 0,
 })
 
-module.exports = connection
+// Kiểm tra kết nối
+// const testConnection = async() => {
+//     try {
+//         const conn = await connection.getConnection();
+//         console.log('✅ Connected to MySQL successfully!');
+//         conn.release(); // Giải phóng kết nối sau khi kiểm tra
+//         return true
+//     } catch (error) {
+//         console.error('❌ Failed to connect to MySQL:', error.message);
+//         return false
+//     }
+// }
+
+module.exports = {
+    connection
+}

@@ -22,6 +22,16 @@ const postCreateUser = (req, res) => {
     res.redirect('/')
 }
 
+const postUpdateUser = (req, res) => {
+    let id = req.params.id
+    let name= req.body.name
+    let date = req.body.date
+    let sex = req.body.sex
+    let address = req.body.address
+    updateUser(id, name, date, sex, address)
+    res.redirect('/')
+}
+
 const getDeleteUser = (req, res) => {
     let idUser = req.params.id
     deleteUser(idUser)
@@ -37,5 +47,6 @@ const getEditUserPage = async (req, res) => {
 module.exports = {
     getHomePage,getUserManagerPage,
     getAddUserPage,postCreateUser,
-    getDeleteUser,getEditUserPage
+    getDeleteUser,getEditUserPage,
+    postUpdateUser
 }

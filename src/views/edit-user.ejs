@@ -20,11 +20,11 @@
             </ul>    
         <!-- navbar -->
         </nav>
-        <%= JSON.stringify(data) %>
+        
         <!-- content -->
         <div class="wp-content">
             <h1>Update a User</h1>
-            <form class="form-add" action="/update-user" method="post">
+            <form class="form-add" action="/update-user/<%= data.id %>" method="post">
                 <div class="input-group">
                     <label for="">Id:</label>
                     <input type="text" name="id" value="<%= data.id %>" readonly>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="input-group">
                     <label for="">Date of birth:</label>
-                    <% var m = new Date(data.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = m.getUTCDate().toString().padStart(2, 0); var dateString = m.getUTCFullYear() +"-"+ month +"-"+ day %>
+                    <% var m = new Date(data.dateOfBirth); var month = (m.getUTCMonth() + 1).toString().padStart(2, 0); var day = (m.getUTCDate() + 1).toString().padStart(2, 0); var dateString = m.getUTCFullYear() +"-"+ month +"-"+ day %>
                     <input type="date" name="date" value="<%= dateString %>">
                 </div>
                 <div class="input-group">

@@ -16,7 +16,6 @@ configViewEngine(app)
 //init web route
 initWebRout(app)
 
-
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)
 })
