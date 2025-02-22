@@ -2,6 +2,7 @@ require('dotenv').config()
 import express from 'express'
 import configViewEngine from './config/viewEngine'
 import {initWebRout} from './routes/web'
+import {initAPIRoute} from './routes/APIRoute'
 
 const app = express()
 const port = process.env.PORT
@@ -15,6 +16,8 @@ configViewEngine(app)
 
 //init web route
 initWebRout(app)
+
+initAPIRoute(app)
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)
